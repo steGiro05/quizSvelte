@@ -1,10 +1,8 @@
 <script>
-import { page } from "$app/stores";
-const quizId=$page.params.quizId;
-
-</script>
+export let data
+    </script>
 
 <div>
     <h1>ciao</h1>
-    <p>id: {quizId}</p>
+    <p>{data.title  }</p>
 </div>
