@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin:http://localhost:5173");
+header("Access-Control-Allow-Origin:https://cautious-fishstick-9ppvw4vx76wc74wr-5173.app.github.dev");
 header('Content-Type: application/json');
 require_once(__DIR__ . '/protected/config.php');
 try {
