@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 21, 2024 alle 14:59
+-- Creato il: Gen 27, 2024 alle 23:45
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -203,7 +203,7 @@ INSERT INTO `risposta` (`id`, `testo`) VALUES
 (9, 'Africa'),
 (10, 'Idrogeno'),
 (11, 'Juventus'),
-(12, 'Brasiliano'),
+(12, 'Miroslav Klose'),
 (13, 'Brasile'),
 (14, '1930'),
 (15, 'Robert Lewandowski'),
@@ -247,7 +247,7 @@ INSERT INTO `risposta` (`id`, `testo`) VALUES
 (53, 'Manchester United'),
 (54, 'Diego Maradona'),
 (55, 'Pele'),
-(56, 'Miroslav Klose'),
+(56, 'Ronaldo Nazario'),
 (57, 'Argentina'),
 (58, 'Germany'),
 (59, 'Brazil'),
@@ -267,7 +267,7 @@ INSERT INTO `risposta` (`id`, `testo`) VALUES
 (73, 'FC Barcelona'),
 (74, 'Liverpool FC'),
 (75, 'Nottingham Forest'),
-(76, 'Sheffield FC'),
+(76, 'Liverpool'),
 (77, 'Manchester United'),
 (78, 'Lionel Messi'),
 (79, 'Ciro Immobile'),
@@ -317,7 +317,7 @@ ALTER TABLE `domanda`
 -- AUTO_INCREMENT per la tabella `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `risposta`

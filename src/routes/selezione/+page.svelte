@@ -1,8 +1,12 @@
 
 <script>
   import LinkBtn from "$lib/LinkBtn.svelte";
+  import {current_question,punteggio} from '$lib/store.js'
+
  export let data;
 const quiz=data.data
+current_question.update(prev=>prev=0)
+punteggio.set(0)
 </script>
 
 <div>

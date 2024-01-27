@@ -1,20 +1,44 @@
 <script>
-    export let question = ''; // Testo della domanda
-    export let answers = [];  // Array di risposte
-  
-    function handleAnswerClick(answer) {
-      console.log(`Hai cliccato su: ${answer}`);
+  export let question = ''; // Testo della domanda
+  export let answers = [];  // Array di risposte
+  import { current_question,punteggio } from './store.js';
+
+  function resetBackgroundColors() {
+    answers.forEach(answer => {
+      const answerElement = document.getElementById(`answer-${answer.id_risposta}`);
+      if (answerElement) {
+        answerElement.style.backgroundColor = '#fff'; // Imposta il colore di sfondo a bianco
+      }
+    });
+  }
+
+  function handleAnswerClick(answer) {
+    
+    const answerElement = document.getElementById(`answer-${answer.id_risposta}`);
+    
+    if (answer.corretta) {
+      answerElement.style.backgroundColor = 'green';
+      punteggio.update(prev=>prev+=1)
+    } else {
+      answerElement.style.backgroundColor = 'red';
     }
-  </script>
-  
-  <div class="card">
-    <p class="question">{question}</p>
-    <ul class="answers">
-      {#each answers as answer (answer)}
-        <li class="answer" on:click={() => handleAnswerClick(answer)}>{answer}</li>
-      {/each}
-    </ul>
-  </div> 
+    
+    setTimeout(() => {
+      
+      current_question.update(prev => prev += 1);
+      resetBackgroundColors(); // Resetta gli sfondi prima di impostare quello corrente
+    }, 500);
+  }
+</script>
+
+<div class="card">
+  <p class="question">{question}</p>
+  <ul class="answers">
+    {#each answers as answer }
+      <li class="answer" on:click={() => handleAnswerClick(answer)} id={`answer-${answer.id_risposta}`}>{answer.testo_risposta}</li>
+    {/each}
+  </ul>
+</div> 
   
   <style>
     /* Aggiungi stili CSS secondo le tue preferenze */
