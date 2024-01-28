@@ -5,8 +5,6 @@
 
  export let data;
 const quiz=data.data
-current_question.update(prev=>prev=0)
-punteggio.set(0)
 </script>
 
 <div>
