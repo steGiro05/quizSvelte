@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 27, 2024 alle 23:45
+-- Creato il: Gen 28, 2024 alle 17:59
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -160,6 +160,20 @@ INSERT INTO `domanda` (`id`, `testo`, `fkQuiz`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `punteggio`
+--
+
+CREATE TABLE `punteggio` (
+  `id` int(11) NOT NULL,
+  `fkUtente` int(11) DEFAULT NULL,
+  `fkQuiz` int(11) DEFAULT NULL,
+  `data_conseguimento` date DEFAULT NULL,
+  `punteggio` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `quiz`
 --
 
@@ -273,6 +287,17 @@ INSERT INTO `risposta` (`id`, `testo`) VALUES
 (79, 'Ciro Immobile'),
 (80, 'Erling Haaland');
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utente`
+--
+
+CREATE TABLE `utente` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -292,6 +317,14 @@ ALTER TABLE `domanda`
   ADD KEY `fkQuiz` (`fkQuiz`);
 
 --
+-- Indici per le tabelle `punteggio`
+--
+ALTER TABLE `punteggio`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fkUtente` (`fkUtente`),
+  ADD KEY `fkQuiz` (`fkQuiz`);
+
+--
 -- Indici per le tabelle `quiz`
 --
 ALTER TABLE `quiz`
@@ -301,6 +334,12 @@ ALTER TABLE `quiz`
 -- Indici per le tabelle `risposta`
 --
 ALTER TABLE `risposta`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `utente`
+--
+ALTER TABLE `utente`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -314,6 +353,12 @@ ALTER TABLE `domanda`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT per la tabella `punteggio`
+--
+ALTER TABLE `punteggio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT per la tabella `quiz`
 --
 ALTER TABLE `quiz`
@@ -324,6 +369,12 @@ ALTER TABLE `quiz`
 --
 ALTER TABLE `risposta`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT per la tabella `utente`
+--
+ALTER TABLE `utente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Limiti per le tabelle scaricate
@@ -341,6 +392,13 @@ ALTER TABLE `appartiene`
 --
 ALTER TABLE `domanda`
   ADD CONSTRAINT `domanda_ibfk_1` FOREIGN KEY (`fkQuiz`) REFERENCES `quiz` (`id`);
+
+--
+-- Limiti per la tabella `punteggio`
+--
+ALTER TABLE `punteggio`
+  ADD CONSTRAINT `punteggio_ibfk_1` FOREIGN KEY (`fkUtente`) REFERENCES `utente` (`id`),
+  ADD CONSTRAINT `punteggio_ibfk_2` FOREIGN KEY (`fkQuiz`) REFERENCES `quiz` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
