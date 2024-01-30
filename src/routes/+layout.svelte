@@ -1,5 +1,4 @@
 <script>
-    import "../global.css";
     import Nav from '$lib/Nav.svelte';
 </script>
 
@@ -7,3 +6,7 @@
 
 
 <slot></slot>
+
+<style>
+    @import "../global.css";
+</style>

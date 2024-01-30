@@ -1,25 +1,13 @@
-<nav>
-	<a href="/">Home</a>
-    <h1>QuizMaster</h1>
-	<a href="/settings">Settings</a>
+<nav class="flex items-center justify-between p-4 bg-blue-500 text-white">
+  <a href="/" class="text-white no-underline font-bold hover:text-blue-700 transition-colors duration-300">Home</a>
+  <h1 class="m-0">QuizMaster</h1>
+  <a href="/settings" class="text-white no-underline font-bold hover:text-blue-700 transition-colors duration-300">Settings</a>
 </nav>
 
+
+
 <style>
-    nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #f0f0f0; /* Aggiungi uno sfondo per evidenziare il navigatore */
-  }
+  /* Your other styles */
 
-  a {
-    text-decoration: none;
-    color: #333;
-    margin: 0 10px; /* Aggiungi margine tra i link */
-  }
-
-  h1 {
-    margin: 0; /* Rimuovi il margine predefinito dal titolo */
-  }
+  @import '../css/tailwind.css'; /* Import Tailwind CSS */
 </style>
