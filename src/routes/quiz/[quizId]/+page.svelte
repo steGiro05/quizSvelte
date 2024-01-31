@@ -22,7 +22,7 @@
   {:else} 
   <h2>fine!</h2>
   <p>Punteggio: {$punteggio}</p>
-  <LinkBtn url='selezione' name='Indietro' />
+  <LinkBtn url='/selezione' name='Indietro' />
   {/if}
   </div>
   
