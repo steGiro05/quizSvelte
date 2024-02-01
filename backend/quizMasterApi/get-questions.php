@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 
 if (!isset($_GET['id'])) {
@@ -22,8 +22,14 @@ try {
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
+    if (count($result) == 0) {
+        sendError('Quiz not found', __LINE__);
+        exit();
+    }
+
     // Creazione dell'array per l'output JSON
     $output = array();
+
 
 
     foreach ($result as $row) {

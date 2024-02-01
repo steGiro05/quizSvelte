@@ -10,8 +10,3 @@
 </a>
 
 
-<style>
-  /* Your other styles */
-
-  @import '../css/tailwind.css'; /* Import Tailwind CSS */
-</style>

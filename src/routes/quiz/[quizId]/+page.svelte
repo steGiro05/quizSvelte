@@ -2,7 +2,7 @@
     export let data;
     import {onMount} from 'svelte';
     import QuestionCard from '$lib/QuestionCard.svelte';
-    import {current_question,punteggio} from '$lib/store.js'
+    import {current_question,punteggio} from '/src/store.js'
     import LinkBtn from "$lib/LinkBtn.svelte";
 
 
