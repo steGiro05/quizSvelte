@@ -1,27 +1,36 @@
+/* global.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 
-  div {
+/* Personalizzazioni o stili globali */
+
+body {
+  margin: 0;
+}
+
+div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 80vh;
-}   
+}
 
-.row{
+.row {
+  display: flex;
   flex-direction: row;
   height: auto;
   gap: 10px; /* Aggiunge uno spazio tra i figli */
 }
 
-p{
-    text-align: center;
-    color: #888; /* Colore grigio per la scritta */
-
+p {
+  text-align: center;
+  color: #888; /* Colore grigio per la scritta */
 }
 
 li {
   list-style-type: none;
 }
-
-
