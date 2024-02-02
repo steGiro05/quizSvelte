@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 02, 2024 alle 07:54
+-- Creato il: Feb 02, 2024 alle 08:54
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -165,7 +165,7 @@ INSERT INTO `domanda` (`id`, `testo`, `fkQuiz`) VALUES
 
 CREATE TABLE `punteggio` (
   `id` int(11) NOT NULL,
-  `fkUtente` int(11) DEFAULT NULL,
+  `fkUtente` varchar(36) DEFAULT NULL,
   `fkQuiz` int(11) DEFAULT NULL,
   `dataConseguimento` datetime DEFAULT NULL,
   `punteggio` decimal(3,2) DEFAULT NULL
@@ -176,10 +176,10 @@ CREATE TABLE `punteggio` (
 --
 
 INSERT INTO `punteggio` (`id`, `fkUtente`, `fkQuiz`, `dataConseguimento`, `punteggio`) VALUES
-(1, 2, 3, '2024-02-02 07:50:41', 1.00),
-(2, 4, 3, '2024-02-01 07:50:41', 0.20),
-(3, 5, 1, '2024-02-03 07:50:41', 0.60),
-(4, 4, 1, '2024-02-02 07:50:41', 0.00);
+(5, '65bc9d8956237', 3, '2024-02-02 08:50:24', 1.00),
+(6, '65bc9d9b19a48', 3, '2024-02-01 08:51:15', 0.20),
+(7, '65bc9daa3753f', 1, '2024-02-02 07:50:41', 0.80),
+(8, '65bc9d8956237', 1, '2024-01-01 08:51:15', 0.40);
 
 -- --------------------------------------------------------
 
@@ -304,10 +304,10 @@ INSERT INTO `risposta` (`id`, `testo`) VALUES
 --
 
 CREATE TABLE `utente` (
-  `id` int(11) NOT NULL,
-  `username` varchar(20) DEFAULT NULL,
-  `email` varchar(80) DEFAULT NULL,
-  `hash` varchar(60) DEFAULT NULL
+  `id` varchar(36) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `hash` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -315,10 +315,10 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`id`, `username`, `email`, `hash`) VALUES
-(2, 'steGiro', 'ste@gmail.com', '$2y$10$iUxrLYNamGX3yy234P75vutpiSBOwJCbNfI0neQ7jprmkQedMk9eC'),
-(3, 'nickBarb', 'barbi@gmail.com', '$2y$10$uYi6NagucHpEv3bp68aCe.GLKbfirAc6Gae66ajsjzezlqATiUKqq'),
-(4, 'tambaPHP', 'tamba@gmail.com', '$2y$10$o9faNTeSCxBzVeC0x.hjbeFFPkfN2pi2GhccFMVXA0TEi0VFDSXVW'),
-(5, 'lory', 'lore@gmail.com', '$2y$10$K6lv32irBqIDDnoWvi.liebnZPlT7x8GS/vBLFT3ZcAkbwQpeOM1G');
+('65bc9d8956237', 'steGiro', 'ste@gmail.com', '$2y$10$iUxrLYNamGX3yy234P75vutpiSBOwJCbNfI0neQ7jprmkQedMk9eC'),
+('65bc9d92812f8', 'nickBarb', 'barbi@gmail.com', '$2y$10$uYi6NagucHpEv3bp68aCe.GLKbfirAc6Gae66ajsjzezlqATiUKqq'),
+('65bc9d9b19a48', 'tambaPHP', 'tamba@gmail.com', '$2y$10$o9faNTeSCxBzVeC0x.hjbeFFPkfN2pi2GhccFMVXA0TEi0VFDSXVW'),
+('65bc9daa3753f', 'lory', 'lore@gmail.com', '$2y$10$K6lv32irBqIDDnoWvi.liebnZPlT7x8GS/vBLFT3ZcAkbwQpeOM1G');
 
 --
 -- Indici per le tabelle scaricate
@@ -378,7 +378,7 @@ ALTER TABLE `domanda`
 -- AUTO_INCREMENT per la tabella `punteggio`
 --
 ALTER TABLE `punteggio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `quiz`
@@ -391,12 +391,6 @@ ALTER TABLE `quiz`
 --
 ALTER TABLE `risposta`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
-
---
--- AUTO_INCREMENT per la tabella `utente`
---
-ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Limiti per le tabelle scaricate
