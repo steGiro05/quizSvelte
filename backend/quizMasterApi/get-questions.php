@@ -1,5 +1,8 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:5173");
+include 'sendError.php';
+
+
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 
 if (!isset($_GET['id'])) {
@@ -22,8 +25,14 @@ try {
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
+    if (count($result) == 0) {
+        sendError('Quiz not found', __LINE__);
+        exit();
+    }
+
     // Creazione dell'array per l'output JSON
     $output = array();
+
 
 
     foreach ($result as $row) {
@@ -66,10 +75,4 @@ try {
     echo '{"status":1, "data":' . json_encode(array_values($arrayFinale), JSON_UNESCAPED_UNICODE) . '}';
 } catch (PDOException $ex) {
     sendError('error executing query', __LINE__);
-}
-
-function sendError($message = 'error', $debug = 0)
-{
-    echo '{"status":0, "message":"' . $message . '", "debug": ' . $debug . '}';
-    exit();
 }

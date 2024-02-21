@@ -1,5 +1,7 @@
 <?php
-header("Access-Control-Allow-Origin:http://localhost:5173");
+include 'sendError.php';
+
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 require_once(__DIR__ . '/protected/config.php');
 try {
