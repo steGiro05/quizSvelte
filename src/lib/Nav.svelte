@@ -1,7 +1,12 @@
-<nav class="flex items-center justify-between p-4 bg-blue-500 text-white">
-  <a href="/" class="text-white no-underline font-bold hover:text-blue-700 transition-colors duration-300">Home</a>
-  <h1 class="m-0">QuizMaster</h1>
-  <a href="/selezione" class="text-white no-underline font-bold hover:text-blue-700 transition-colors duration-300">Settings</a>
+<script>
+  export let showIcon;
+</script>
+
+<nav class="flex items-center justify-between p-4 bg-trasparent w-full h-12">
+  {#if showIcon}
+  <h1>Ciao</h1>
+  {/if}
+  
 </nav>
 
 

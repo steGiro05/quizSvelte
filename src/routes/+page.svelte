@@ -1,23 +1,25 @@
 <script>
-	import { user } from '../store';
-	import {goto} from '$app/navigation';
+	import { user, showIcon } from '../store';
 	import LoginForm from '../lib/LoginForm.svelte';
-	import LinkBtn from '../lib/LinkBtn.svelte'
 
-	$: isLoggedIn = $user === null ? false : true;
+
+	showIcon.set(false)
+	let isLoggedIn = false;
 
 	const logOut = () => {
-		user.update((val) => (val = null));
+		user.update(val => null);
 	};
 	
+	$: isLoggedIn = $user !== null;
 </script>
+
+
 
 <div>
 	{#if isLoggedIn}
-		<h2>Thank yo for logging in!</h2>
+		<h2>Thank you for logging in!</h2>
 		<input type="button" value="Logout!" on:click={logOut} />
 	{:else}
-		<h2>Log in</h2>
 		<LoginForm />
 	{/if}
 </div>
