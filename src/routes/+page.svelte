@@ -1,12 +1,15 @@
 <script>
 	import { user } from '../store';
+	import {goto} from '$app/navigation';
 	import LoginForm from '../lib/LoginForm.svelte';
+	import LinkBtn from '../lib/LinkBtn.svelte'
 
 	$: isLoggedIn = $user === null ? false : true;
 
 	const logOut = () => {
 		user.update((val) => (val = null));
 	};
+	
 </script>
 
 <div>
