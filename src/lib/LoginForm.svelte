@@ -1,5 +1,5 @@
 <script>
-	import { user } from '../store';
+	import LinkBtn from './LinkBtn.svelte';
 	let username = '';
 	let password = '';
 	let currentError = null;
@@ -28,22 +28,25 @@
 	};
 </script>
 
-<form class="max-w-md mx-auto my-8" on:submit|preventDefault={login}>
-	<label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+<form
+	class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white"
+	on:submit|preventDefault={login}
+>
+	<h1 class="text-6xl">Quizmaster</h1>
 	<input
 		type="text"
 		id="username"
 		bind:value={username}
-		class="w-full p-2 border border-gray-300 rounded mb-4"
+		class="bg-[#ff9051] text-black placeholder:text-black placeholder:opacity-80 w-3/4 h-14 rounded-lg p-4"
+		placeholder="mariorossi@gmail.com"
 	/>
-
-	<label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
 	<input
 		type="password"
 		id="password"
 		bind:value={password}
-		class="w-full p-2 border border-gray-300 rounded mb-4"
+		class="bg-[#ff9051] text-black placeholder:text-black placeholder:opacity-80 w-3/4 h-14 rounded-lg p-4"
+		placeholder="password"
 	/>
-
-	<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-full">Log In</button>
+	<LinkBtn name="Registrati" url="/register" />
+	<button type="submit" class="">Accedi</button>
 </form>

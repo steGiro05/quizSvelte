@@ -14,7 +14,6 @@
 		<h2>Thank yo for logging in!</h2>
 		<input type="button" value="Logout!" on:click={logOut} />
 	{:else}
-		<h2>Log in</h2>
 		<LoginForm />
 	{/if}
 </div>
