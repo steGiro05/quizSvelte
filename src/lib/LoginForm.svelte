@@ -1,5 +1,5 @@
 <script>
-	import LinkBtn from "./LinkBtn.svelte"
+	import LinkBtn from './LinkBtn.svelte';
 	let username = '';
 	let password = '';
 	let currentError = null;
@@ -28,22 +28,34 @@
 	};
 </script>
 
-<form class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white" on:submit|preventDefault={login}>
+<form
+	class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white"
+	on:submit|preventDefault={login}
+>
 	<h1 class="text-6xl">Quizmaster</h1>
 	<input
 		type="text"
 		id="username"
 		bind:value={username}
-		class="bg-[#ff9051] text-black placeholder:text-black placeholder:opacity-80 w-3/4 h-14 rounded-lg p-4"
+		class=""
 		placeholder="mariorossi@gmail.com"
 	/>
 	<input
 		type="password"
 		id="password"
 		bind:value={password}
-		class="bg-[#ff9051] text-black placeholder:text-black placeholder:opacity-80 w-3/4 h-14 rounded-lg p-4"
+		class="custom-input"
 		placeholder="password"
 	/>
-	<LinkBtn name='Registrati' url='/register'/>
+	<LinkBtn name="Registrati" url="/register" />
 	<button type="submit" class="">Accedi</button>
 </form>
+
+<style>
+	.custom-input {
+		/* Stili generici per l'input */
+
+		/* Stili specifici per l'input */
+		/* Aggiungi ulteriori stili qui secondo le tue preferenze */
+	}
+</style>
