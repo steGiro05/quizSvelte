@@ -33,6 +33,7 @@
 	on:submit|preventDefault={login}
 >
 	<h1 class="text-6xl">Quizmaster</h1>
+
 	<input
 		type="text"
 		id="username"
