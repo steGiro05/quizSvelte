@@ -8,6 +8,15 @@
 	const login = () => {
 		//fetch al server
 
+		if (!username) {
+			currentError = 'Username is empty';
+			return;
+		}
+		if (!password) {
+			currentError = 'Password is empty';
+			return;
+		}
+
 		fetch('http://localhost/es/quizMasterApi/login.php', {
 			method: 'POST',
 			headers: {
@@ -58,8 +67,8 @@
 		class="custom-input"
 		placeholder="password"
 	/>
-	<LinkBtn name="Registrati" url="/register" />
 	<button type="submit" class="">Accedi</button>
+	<LinkBtn name="Registrati" url="/register" />
 	{#if currentError}
 		<p>{currentError}</p>
 	{/if}
