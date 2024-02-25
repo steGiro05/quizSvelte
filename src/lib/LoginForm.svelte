@@ -1,4 +1,5 @@
 <script>
+	import { user } from '../store';
 	import LinkBtn from './LinkBtn.svelte';
 	let username = '';
 	let password = '';
@@ -6,25 +7,35 @@
 
 	const login = () => {
 		//fetch al server
-		/*
-		fetch('http://localhost/es/quizMasterApi/create-user.php', {
+
+		fetch('http://localhost/es/quizMasterApi/login.php', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ username: username, password: password })
+			body: JSON.stringify({
+				username: username,
+				password: password
+			})
 		})
 			.then((res) => {
-				if (res.status < 299) return res.json();
-				else currentError = 'Something not right with server response';
+				if (!res.ok) {
+					// Se la richiesta non ha avuto successo, lanciamo un errore con lo stato della risposta
+					throw new Error(`Request failed with status ${res.status}`);
+				}
+				return res.json();
 			})
 			.then((data) => {
-				if (data) user.update((val) => (val = { ...data }));
+				// Gestisci la risposta JSON qui
+				if (data.status == 1) user.update((val) => (val = { ...data.data }));
+				else currentError = data.message;
+				// Esegui le azioni necessarie dopo aver ricevuto la risposta
 			})
 			.catch((error) => {
-				currentError = error;
-				console.log('Error logging in: ', error);
-			});*/
+				// Gestisci gli errori qui
+				console.log('Error logging in:', error.message);
+				currentError = error.message; // Aggiorna la variabile currentError con il messaggio di errore
+			});
 	};
 </script>
 
@@ -49,6 +60,9 @@
 	/>
 	<LinkBtn name="Registrati" url="/register" />
 	<button type="submit" class="">Accedi</button>
+	{#if currentError}
+		<p>{currentError}</p>
+	{/if}
 </form>
 
 <style>
