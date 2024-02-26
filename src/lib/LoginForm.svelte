@@ -5,6 +5,10 @@
 	let password = '';
 	let currentError = null;
 
+	const saveUser = (user) => {
+		localStorage.setItem('user', JSON.stringify(user));
+	};
+
 	const login = () => {
 		//fetch al server
 
@@ -38,6 +42,7 @@
 				// Gestisci la risposta JSON qui
 				if (data.status == 1) user.update((val) => (val = { ...data.data }));
 				else currentError = data.message;
+				saveUser($user);
 				// Esegui le azioni necessarie dopo aver ricevuto la risposta
 			})
 			.catch((error) => {
@@ -52,19 +57,19 @@
 	class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white"
 	on:submit|preventDefault={login}
 >
-	<h1 class="text-6xl">Quizmaster</h1>
+	<h1 class="text-6xl text-secondary">Quizmaster</h1>
 	<input
 		type="text"
 		id="username"
 		bind:value={username}
-		class=""
+		class="bg-primary w-4/5 h-12 rounded-lg text-black text-lg"
 		placeholder="mariorossi@gmail.com"
 	/>
 	<input
 		type="password"
 		id="password"
 		bind:value={password}
-		class="custom-input"
+		class="bg-primary w-4/5 h-12 rounded-lg text-black text-lg"
 		placeholder="password"
 	/>
 	<button type="submit" class="">Accedi</button>

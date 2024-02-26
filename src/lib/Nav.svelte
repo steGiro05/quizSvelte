@@ -4,6 +4,7 @@
 
 	const logOut = () => {
 		user.update((val) => null);
+		localStorage.setItem('user', null);
 	};
 
 	$: isLoggedIn = $user !== null;
@@ -14,6 +15,6 @@
 		<h1>Ciao</h1>
 	{/if}
 	{#if isLoggedIn}
-		<h1>Ciao</h1>
+		<button on:click={logOut}>Logout!</button>
 	{/if}
 </nav>

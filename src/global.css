@@ -4,33 +4,31 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
 /* Personalizzazioni o stili globali */
 
 body {
-  margin: 0;
+	margin: 0;
 }
 
 div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 80vh;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  height: auto;
-  gap: 10px; /* Aggiunge uno spazio tra i figli */
+	display: flex;
+	flex-direction: row;
+	height: auto;
+	gap: 10px; /* Aggiunge uno spazio tra i figli */
 }
 
 p {
-  text-align: center;
-  color: #888; /* Colore grigio per la scritta */
+	text-align: center;
 }
 
 li {
-  list-style-type: none;
+	list-style-type: none;
 }
