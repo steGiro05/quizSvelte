@@ -6,7 +6,6 @@ header("Access-Control-Allow-Origin: *");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     // Gestisci le richieste preflight OPTIONS
-    header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: POST"); // Modifica se necessario
     header("Access-Control-Allow-Headers: Content-Type"); // Aggiungi Content-Type
     exit; // Termina lo script dopo la gestione delle richieste preflight

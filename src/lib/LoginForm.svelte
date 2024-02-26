@@ -78,12 +78,3 @@
 		<p>{currentError}</p>
 	{/if}
 </form>
-
-<style>
-	.custom-input {
-		/* Stili generici per l'input */
-
-		/* Stili specifici per l'input */
-		/* Aggiungi ulteriori stili qui secondo le tue preferenze */
-	}
-</style>
