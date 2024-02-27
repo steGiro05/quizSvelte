@@ -4,6 +4,6 @@
 	export let url;
 </script>
 
-<button on:click={() => goto(url)}>
+<button on:click|preventDefault={() => goto(url)}>
 	{name}
 </button>

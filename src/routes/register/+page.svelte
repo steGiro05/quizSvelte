@@ -2,6 +2,6 @@
 	import RegisterForm from '../../lib/RegisterForm.svelte';
 </script>
 
-<div>
+<div class="div-primary">
 	<RegisterForm />
 </div>

@@ -58,7 +58,7 @@
 	class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white rounded-lg"
 	on:submit|preventDefault={login}
 >
-	<h1 class="text-6xl text-secondary font-semibold mb-8">Quizmaster</h1>
+	<h1 class="text-6xl text-secondary font-semibold mb-5">Quizmaster</h1>
 	<input
 		type="text"
 		id="username"
