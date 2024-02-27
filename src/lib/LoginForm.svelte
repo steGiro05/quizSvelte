@@ -40,9 +40,10 @@
 			})
 			.then((data) => {
 				// Gestisci la risposta JSON qui
-				if (data.status == 1) user.update((val) => (val = { ...data.data }));
-				else currentError = data.message;
-				saveUser($user);
+				if (data.status == 1) {
+					user.update((val) => (val = { ...data.data }));
+					saveUser($user);
+				} else currentError = data.message;
 				// Esegui le azioni necessarie dopo aver ricevuto la risposta
 			})
 			.catch((error) => {
@@ -54,27 +55,28 @@
 </script>
 
 <form
-	class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white"
+	class="flex flex-col gap-y-4 items-center w-1/3 px-8 py-8 mx-auto px bg-white rounded-lg"
 	on:submit|preventDefault={login}
 >
-	<h1 class="text-6xl text-secondary">Quizmaster</h1>
+	<h1 class="text-6xl text-secondary font-semibold mb-8">Quizmaster</h1>
 	<input
 		type="text"
 		id="username"
 		bind:value={username}
-		class="bg-primary w-4/5 h-12 rounded-lg text-black text-lg"
+		class="bg-primary w-4/5 h-12 rounded-lg text-black text-lg p-4 placeholder-black placeholder-opacity-70"
 		placeholder="mariorossi@gmail.com"
 	/>
+
 	<input
 		type="password"
 		id="password"
 		bind:value={password}
-		class="bg-primary w-4/5 h-12 rounded-lg text-black text-lg"
+		class="bg-primary w-4/5 h-12 rounded-lg text-black text-lg p-4 placeholder-black placeholder-opacity-70"
 		placeholder="password"
 	/>
-	<button type="submit" class="">Accedi</button>
+	<button type="submit" class="bg-secondary w-3/5 h-12 rounded-lg text-white">Accedi</button>
 	<LinkBtn name="Registrati" url="/register" />
 	{#if currentError}
-		<p>{currentError}</p>
+		<p class="error-message">{currentError}</p>
 	{/if}
 </form>

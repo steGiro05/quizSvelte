@@ -9,7 +9,7 @@
 	$: isLoggedIn = $user !== null;
 </script>
 
-<div>
+<div class="div-primary">
 	{#if isLoggedIn}
 		{goto('/selezione')}
 	{:else}

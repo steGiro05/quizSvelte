@@ -5,7 +5,7 @@
 	const quiz = data.data;
 </script>
 
-<div>
+<div class="div-primary">
 	<h2>Scegli un quiz..</h2>
 	<div class="row">
 		{#each quiz as q}
