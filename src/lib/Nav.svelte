@@ -1,10 +1,12 @@
 <script>
 	export let showIcon;
 	import { user } from '../store';
+	import { goto } from '$app/navigation';
 
 	const logOut = () => {
 		user.update((val) => null);
 		localStorage.setItem('user', null);
+		goto('/');
 	};
 
 	$: isLoggedIn = $user !== null;
