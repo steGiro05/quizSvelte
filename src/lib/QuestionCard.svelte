@@ -32,17 +32,17 @@
 	}
 </script>
 
-<div class="card bg-blue-500 text-white rounded p-4 mb-4">
-	<p class="question text-lg font-bold mb-2">{question}</p>
-	<ul class="answers flex flex-wrap gap-4">
+<div class="card bg-blue-500 text-secondary rounded p-4 mb-2">
+	<p class="text-xl font-bold mb-16">{question}</p>
+	<div class="w-full flex flex-row flex-wrap items-center mx-auto gap-8">
 		{#each answers as answer}
 			<button
-				class="answer w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 bg-white text-black border border-gray-300 p-2 rounded cursor-pointer"
+				class="rounded-lg px-4 py-2 w-44 mx-auto text-secondary border border-secondary bg-trasparent font-semibold shadow-sm cursor-pointer"
 				on:click={() => handleAnswerClick(answer)}
 				id={`answer-${answer.id_risposta}`}
 			>
 				{answer.testo_risposta}
 			</button>
 		{/each}
-	</ul>
+	</div>
 </div>

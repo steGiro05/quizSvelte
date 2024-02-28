@@ -13,7 +13,12 @@ module.exports = {
 			primary: '#FF9051',
 			secondary: '#3D1D9D',
 			white: colors.white,
-			black: colors.black
+			black: colors.black,
+			bOne: '#008000',
+			bTwo: '#FF0000',
+			bThree: '#263CFF',
+			bFour: '#FFA826',
+			trasparent: colors.transparent
 			// ...
 		}
 	}
