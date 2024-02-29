@@ -30,9 +30,9 @@ try {
         WHERE id=:id");
     $query1->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
     $query1->execute();
-    $result1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+    $url_img = $query1->fetch();
 
-    if (count($result) == 0||count($result1)==0) {
+    if (count($result) == 0 || count($url_img) == 0) {
         sendError('Quiz not found', __LINE__);
         exit();
     }
@@ -79,9 +79,15 @@ try {
         array_push($domande, $val);
     }
 
-    $data=['Domande'=>$domande,'Img'=>$result1];
+    $data = array(
+        "status" => 1,
+        "data" => array(
+            "domande" => $domande,
+            "url_img" => $url_img['img']
+        )
+    );
 
-    echo '{"status":1, "data":' . json_encode(array_values($data), JSON_UNESCAPED_UNICODE) . '}';
+    echo (json_encode($data));
 } catch (PDOException $ex) {
     sendError('error executing query', __LINE__);
 }

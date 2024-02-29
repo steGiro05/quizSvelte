@@ -56,11 +56,11 @@ try {
         sendError("User doesn't exist", __LINE__);
     }
 
-     $query1 = $db->prepare('SELECT id,username, email FROM utente WHERE id = :id');
+    $query1 = $db->prepare('SELECT id,username, email FROM utente WHERE id = :id');
     $query1->bindValue(':id', $id, PDO::PARAM_STR);
     $query1->execute();
 
-    $result = $query1->fetchAll(PDO::FETCH_ASSOC);
+    $result = $query1->fetch(PDO::FETCH_ASSOC);
 
 
     echo '{"status":1, "data":' . json_encode($result) . '}';

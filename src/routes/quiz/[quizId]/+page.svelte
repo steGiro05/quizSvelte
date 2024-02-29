@@ -2,16 +2,18 @@
 	export let data;
 	import { onMount } from 'svelte';
 	import QuestionCard from '$lib/QuestionCard.svelte';
-	import { current_question, punteggio } from '/src/store.js';
+	import { current_question, punteggio, user } from '/src/store.js';
 	import LinkBtn from '$lib/LinkBtn.svelte';
+
+	const path = '/scoreIcon.png';
 
 	onMount(() => {
 		current_question.set(0);
 		punteggio.set(0);
 	});
 
-	console.log(data);
-	let questions = data.data;
+	let questions = data.data.domande;
+	let url = data.data.url_img;
 </script>
 
 <div class="div-primary">
@@ -20,11 +22,20 @@
 			<QuestionCard
 				question={questions[$current_question].domanda}
 				answers={questions[$current_question].risposte}
+				img={url}
 			/>
 			<p>{$current_question + 1}/{questions.length}</p>
 		{:else}
-			<h2>fine!</h2>
-			<p>Punteggio: {$punteggio}</p>
+			<img src="\scoreIcon.png" width="30" height="30" alt="An alt text" />
+			<h2>Il tuo punteggio</h2>
+			<div class="bg-green">
+				<p>{$punteggio}</p>
+				<p>RISPOSTE CORRETTE</p>
+			</div>
+			<div class="bg-red">
+				<p>{questions.length - $punteggio}</p>
+				<p>RISPOSTE ERRATE</p>
+			</div>
 			<LinkBtn url="/selezione" name="Indietro" />
 		{/if}
 	</div>

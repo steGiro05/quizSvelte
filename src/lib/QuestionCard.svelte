@@ -1,38 +1,18 @@
 <script>
 	export let question = ''; // Testo della domanda
 	export let answers = []; // Array di risposte
+	export let img;
 	import { current_question, punteggio } from '../store';
 
-	function resetBackgroundColors() {
-		answers.forEach((answer) => {
-			const answerElement = document.getElementById(`answer-${answer.id_risposta}`);
-			if (answerElement) {
-				answerElement.classList.remove('bg-green-500', 'bg-red-500');
-				answerElement.classList.add('bg-white');
-			}
-		});
-	}
-
 	function handleAnswerClick(answer) {
-		const answerElement = document.getElementById(`answer-${answer.id_risposta}`);
-
-		if (answer.corretta) {
-			answerElement.classList.remove('bg-white', 'bg-red-500');
-			answerElement.classList.add('bg-green-500');
-			punteggio.update((prev) => (prev += 1));
-		} else {
-			answerElement.classList.remove('bg-white', 'bg-green-500');
-			answerElement.classList.add('bg-red-500');
-		}
-
 		setTimeout(() => {
 			current_question.update((prev) => (prev += 1));
-			resetBackgroundColors();
-		}, 500);
+		}, 100);
 	}
 </script>
 
-<div class="card bg-blue-500 text-secondary rounded p-4 mb-2">
+<img src="/{img}" height="50" width="50" alt="Immagine quiz" />
+<div class="text-secondary p-4 mb-2">
 	<p class="text-xl font-bold mb-16">{question}</p>
 	<div class="w-full flex flex-row flex-wrap items-center mx-auto gap-8">
 		{#each answers as answer}

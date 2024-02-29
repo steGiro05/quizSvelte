@@ -1,11 +1,12 @@
-import { navigate } from 'svelte-routing';
+import { goto } from '$app/navigation';
 
 export const load = ({ fetch, params }) => {
 	const fetchQuestions = async (id) => {
 		const res = await fetch(`http://localhost/es/quizMasterApi/get-questions.php?id=${id}`);
 		const data = await res.json();
-		if (data.data == false) {
-			navigate('/selezione');
+		if (data.status == 0) {
+			goto('/selezione');
+			return;
 		}
 
 		return data;

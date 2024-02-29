@@ -18,7 +18,9 @@ module.exports = {
 			bTwo: '#FF0000',
 			bThree: '#263CFF',
 			bFour: '#FFA826',
-			trasparent: colors.transparent
+			trasparent: colors.transparent,
+			green: '#008000',
+			red: '#FF0000'
 			// ...
 		}
 	}

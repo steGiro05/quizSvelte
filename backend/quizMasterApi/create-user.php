@@ -21,7 +21,7 @@ $data = json_decode($postData, true);
 $maxCharacters = 20;
 $minCharacters = 5;
 
-checkData($maxCharacters, $minCharacters,$data['username'],$data['email'],$data['password']);
+checkData($maxCharacters, $minCharacters, $data['username'], $data['email'], $data['password']);
 
 
 
@@ -67,7 +67,7 @@ try {
     $query1->bindValue(':id', $id, PDO::PARAM_STR);
     $query1->execute();
 
-    $result = $query1->fetchAll(PDO::FETCH_ASSOC);
+    $result = $query1->fetch(PDO::FETCH_ASSOC);
 
     echo '{"status":1, "message":"user created", "data":' . json_encode($result) . '}';
 } catch (PDOException $ex) {
@@ -75,7 +75,7 @@ try {
 }
 
 
-function checkData($maxCharacters, $minCharacters,$username,$email,$password)
+function checkData($maxCharacters, $minCharacters, $username, $email, $password)
 {
 
     // Verifica la presenza di 'username', 'email' e 'password'
@@ -90,27 +90,25 @@ function checkData($maxCharacters, $minCharacters,$username,$email,$password)
     }
 
     // Verifica la lunghezza di 'username'
- // Verifica la lunghezza di 'username'
-if (!is_string($username)) {
-    sendError($username, __LINE__);
-    
-} elseif (strlen($username) < $minCharacters) {
-    sendError('username min ' . $minCharacters . ' characters', __LINE__);
-} elseif (strlen($username) > $maxCharacters) {
-    sendError('username max ' . $maxCharacters . ' characters', __LINE__);
-}
+    // Verifica la lunghezza di 'username'
+    if (!is_string($username)) {
+        sendError($username, __LINE__);
+    } elseif (strlen($username) < $minCharacters) {
+        sendError('username min ' . $minCharacters . ' characters', __LINE__);
+    } elseif (strlen($username) > $maxCharacters) {
+        sendError('username max ' . $maxCharacters . ' characters', __LINE__);
+    }
 
-// Verifica la lunghezza di 'password'
-if (!is_string($password)) {
-    sendError(gettype($password), __LINE__);
-} elseif (strlen($password) < $minCharacters) {
-    sendError('password min ' . $minCharacters . ' characters', __LINE__);
-} elseif (strlen($password) > $maxCharacters) {
-    sendError('password max ' . $maxCharacters . ' characters', __LINE__);
-}
+    // Verifica la lunghezza di 'password'
+    if (!is_string($password)) {
+        sendError(gettype($password), __LINE__);
+    } elseif (strlen($password) < $minCharacters) {
+        sendError('password min ' . $minCharacters . ' characters', __LINE__);
+    } elseif (strlen($password) > $maxCharacters) {
+        sendError('password max ' . $maxCharacters . ' characters', __LINE__);
+    }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    sendError('Email not valid',__LINE__);
-} 
-
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        sendError('Email not valid', __LINE__);
+    }
 }
