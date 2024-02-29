@@ -1,5 +1,7 @@
-import { Handle } from '@sveltejs/kit';
-
-export const Handle = async ({ event, resolve }) => {
-	console.log(event);
-};
+/*export async function handle({ event, resolve }) {
+	if (event.url.pathname.startsWith('/')) {
+		return new Response('custom response');
+	}
+	const response = await resolve(event);
+	return response;
+}*/

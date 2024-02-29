@@ -10,6 +10,7 @@
 		punteggio.set(0);
 	});
 
+	console.log(data);
 	let questions = data.data;
 </script>
 

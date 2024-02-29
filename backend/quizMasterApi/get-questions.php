@@ -25,7 +25,14 @@ try {
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    if (count($result) == 0) {
+    $query1 = $db->prepare("SELECT url_icon AS img
+        FROM quiz  
+        WHERE id=:id");
+    $query1->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+    $query1->execute();
+    $result1 = $query1->fetchAll(PDO::FETCH_ASSOC);
+
+    if (count($result) == 0||count($result1)==0) {
         sendError('Quiz not found', __LINE__);
         exit();
     }
@@ -66,13 +73,15 @@ try {
     shuffle($output);
     $arrayTagliato = array_slice($output, 0, $numeroDomande);
 
-    $arrayFinale = array();
+    $domande = array();
     foreach ($arrayTagliato as $val) {
         shuffle($val['risposte']);
-        array_push($arrayFinale, $val);
+        array_push($domande, $val);
     }
 
-    echo '{"status":1, "data":' . json_encode(array_values($arrayFinale), JSON_UNESCAPED_UNICODE) . '}';
+    $data=['Domande'=>$domande,'Img'=>$result1];
+
+    echo '{"status":1, "data":' . json_encode(array_values($data), JSON_UNESCAPED_UNICODE) . '}';
 } catch (PDOException $ex) {
     sendError('error executing query', __LINE__);
 }
