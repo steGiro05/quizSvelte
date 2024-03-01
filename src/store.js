@@ -9,5 +9,3 @@ export const user = writable(null);
 export const showIcon = writable(false);
 
 export const quizImg = writable(null);
-
-export const quizzes = writable(null);
