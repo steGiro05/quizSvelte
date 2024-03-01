@@ -40,7 +40,7 @@
 				</div>
 			</div>
 
-			<a href="/" class="text-secondary mb-2">Visualizza classifica globale</a>
+			<a href="/globalStats" class="text-secondary mb-2">Visualizza classifica globale</a>
 			<LinkBtn url="/selezione" name="Torna alla Home" colorIndex="4" />
 		{/if}
 	</div>

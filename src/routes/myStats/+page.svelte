@@ -1,10 +1,15 @@
 <script>
-	import { user } from '/src/store.js';
-	import LinkBtn from '../../../lib/LinkBtn.svelte';
+	import { user } from '../../store';
 
 	export let data;
-	let stats = data.data;
-	console.log(stats);
+	let quiz = data.data;
+
+	function calculateColorIndex() {
+		colorIndex = colorIndex % 4; // Assicura che colorIndex sia compreso tra 0 e 3
+		return colorIndex++;
+	}
+
+	console.log(quiz);
 </script>
 
 <div class="div-primary">
@@ -23,11 +28,9 @@
 			<p>Statistiche:</p>
 		</div>
 		<div class="w-4/5 flex flex-row flex-wrap items-center mx-auto gap-8">
-			<!-- {#each quiz as q}
-				<LinkBtn name={q.titolo} url="quiz/{q.id} " colorIndex={calculateColorIndex()} />
-			{/each} -->
-			<LinkBtn name="calcio" url="/ " colorIndex="0" />
-			<LinkBtn name="calcio" url="/ " colorIndex="0" />
+			{#each quiz as q}
+				<LinkBtn name={q.titolo} url="globalStats/{q.id} " colorIndex={calculateColorIndex()} />
+			{/each}
 		</div>
 	</div>
 </div>

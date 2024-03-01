@@ -22,7 +22,9 @@
 	{/if}
 	{#if isLoggedIn}
 		<div class="ml-auto w-auto h-auto flex flex-row gap-7 items-center text-lg">
-			<a href="/" class="text-white font-bold">Classifica globale</a>
+			<a href="/" class="text-white font-bold">Home</a>
+
+			<a href="/globalStats" class="text-white font-bold">Classifica globale</a>
 
 			<Button class="flex flex-row">
 				<p class="tezt-lg">{$user.username}</p>
@@ -40,9 +42,9 @@
 				</svg>
 			</Button>
 			<Dropdown>
-				<DropdownItem>
+				<!-- 	<DropdownItem>
 					<LinkBtn name="myStats" url="/myStats/{$user.id}" />
-				</DropdownItem>
+				</DropdownItem> -->
 				<DropdownItem>
 					<button on:click={logOut}> Logout </button>
 				</DropdownItem>
