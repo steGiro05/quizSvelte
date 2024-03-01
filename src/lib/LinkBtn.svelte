@@ -3,7 +3,7 @@
 	export let name;
 	export let url;
 	export let colorIndex = null;
-	let colors = ['bg-bOne', 'bg-bTwo', 'bg-bThree', 'bg-bFour'];
+	let colors = ['bg-bOne', 'bg-bTwo', 'bg-bThree', 'bg-bFour', 'bg-secondary'];
 	let style =
 		colors[colorIndex] + ' rounded-lg px-4 py-2 w-40 mx-auto text-white font-semibold shadow-lg';
 	if (colorIndex == null) {

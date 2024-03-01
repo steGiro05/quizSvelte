@@ -3,6 +3,7 @@
 	import { user } from '../store';
 	import { goto } from '$app/navigation';
 	import { Button, Dropdown, DropdownItem } from 'flowbite-svelte';
+	import LinkBtn from './LinkBtn.svelte';
 
 	let showDropdown = false; // Variabile per controllare lo stato del menù a tendina
 
@@ -15,18 +16,21 @@
 	$: isLoggedIn = $user !== null;
 </script>
 
-<nav class="flex items-center justify-between py-8 px-2 bg-transparent w-full h-12">
+<nav class="flex flex-row items-center justify-between py-8 px-2 bg-transparent w-full h-12">
 	{#if showIcon}
 		<h1>Ciao</h1>
 	{/if}
 	{#if isLoggedIn}
-		<div class="ml-auto">
-			<Button
-				><svg
+		<div class="ml-auto w-auto h-auto flex flex-row gap-7 items-center text-lg">
+			<a href="/" class="text-white font-bold">Classifica globale</a>
+
+			<Button class="flex flex-row">
+				<p class="tezt-lg">{$user.username}</p>
+				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
 					fill="currentColor"
-					class="w-8 h-8"
+					class="w-12 h-12"
 				>
 					<path
 						fill-rule="evenodd"
@@ -36,6 +40,9 @@
 				</svg>
 			</Button>
 			<Dropdown>
+				<DropdownItem>
+					<LinkBtn name="myStats" url="/myStats/{$user.id}" />
+				</DropdownItem>
 				<DropdownItem>
 					<button on:click={logOut}> Logout </button>
 				</DropdownItem>
