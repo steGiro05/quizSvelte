@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 
 	const uploadScore = (idUser, idQuiz, score) => {
+		console.log('caricando: ', idUser, idQuiz, score);
 		fetch('http://localhost/es/quizMasterApi/post-score.php', {
 			method: 'POST',
 			headers: {

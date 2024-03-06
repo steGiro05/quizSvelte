@@ -1,9 +1,17 @@
+import { goto } from '$app/navigation';
+
 export const load = ({ fetch, params }) => {
-	const fetchQuiz = async () => {
-		const res = await fetch(`http://localhost/es/quizMasterApi/get-quiz.php`);
+	const fetchPersonalScore = async (id) => {
+		let url = `http://localhost/es/quizMasterApi/get-personalScore.php?id=${id}`;
+		const res = await fetch(url);
 		const data = await res.json();
-		return { ...data, ...params }; // Concatena i parametri ai dati e restituisci l'oggetto risultante
+		if (data.status == 0) {
+			goto('/selezione');
+			return;
+		}
+
+		return data;
 	};
 
-	return fetchQuiz();
+	return fetchPersonalScore(params.userId);
 };

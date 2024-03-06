@@ -42,9 +42,9 @@
 				</svg>
 			</Button>
 			<Dropdown>
-				<!-- 	<DropdownItem>
+				<DropdownItem>
 					<LinkBtn name="myStats" url="/myStats/{$user.id}" />
-				</DropdownItem> -->
+				</DropdownItem>
 				<DropdownItem>
 					<button on:click={logOut}> Logout </button>
 				</DropdownItem>
